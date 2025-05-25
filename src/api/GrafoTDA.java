@@ -5,5 +5,6 @@ package api;
     void agregarNodo(int valor);
     void verAristas();
     void eliminarNodo(int valor);
-    //void dijkstra(int origen);
+    void eliminarArista(int u, int v);
+    void dijkstra(int origen);
 }
