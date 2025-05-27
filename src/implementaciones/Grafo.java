@@ -8,20 +8,20 @@ public class Grafo implements GrafoTDA {
     int numNodos = 0;
     final int INF = Integer.MAX_VALUE;
 
-    public Grafo() {
+    public Grafo() { // O(n**2)
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
-                aristas[i][j] = INF; // aristas no conectadas por defecto
+                aristas[i][j] = INF;
             }
         }
     }
 
-    public void agregarNodo(int valor) {
+    public void agregarNodo(int valor) { // O(cte)
         nodos[numNodos] = valor;
         numNodos++;
     }
 
-    public void agregarArista(int u, int v, int peso) {
+    public void agregarArista(int u, int v, int peso) { // O(n)
         int i = obtenerIndiceNodo(u);
         int j = obtenerIndiceNodo(v);
         if (i != -1 && j != -1) {
@@ -29,14 +29,14 @@ public class Grafo implements GrafoTDA {
         }
     }
 
-    public void eliminarArista(int u, int v) {
+    public void eliminarArista(int u, int v) { // O(n)
         int i = obtenerIndiceNodo(u);
         int j = obtenerIndiceNodo(v);
         if (i != -1 && j != -1) {
             aristas[i][j] = INF;
         }
     }
-    public void eliminarNodo(int valor) { //duda
+    public void eliminarNodo(int valor) { // // O(n**2)
         int indice=obtenerIndiceNodo(valor);
        nodos[indice] = 0;
        for (int i=indice; i<numNodos-1; i++){
@@ -57,7 +57,7 @@ public class Grafo implements GrafoTDA {
         numNodos--;
     }
 
-    public void dijkstra(int origenValor) {
+    public void dijkstra(int origenValor) { // O(n**2)
         int origen = obtenerIndiceNodo(origenValor);
         if (origen == -1) {
             System.out.println("Nodo de origen no encontrado.");
@@ -95,7 +95,7 @@ public class Grafo implements GrafoTDA {
     }
 
 
-    private int verticeMinDistancia(int[] distancia, boolean[] visitado) {
+    private int verticeMinDistancia(int[] distancia, boolean[] visitado) { //O(n)
         int min = INF;
         int minIndex = -1;
 
@@ -109,7 +109,7 @@ public class Grafo implements GrafoTDA {
         return minIndex;
     }
 
-    private void mostrarDistancias(int[] distancia, int[] previo, int origen) {
+    private void mostrarDistancias(int[] distancia, int[] previo, int origen) { // O(n)
         System.out.println("Distancias y caminos mínimos desde el nodo " + nodos[origen] + ":");
 
         for (int i = 0; i < numNodos; i++) {
@@ -125,7 +125,7 @@ public class Grafo implements GrafoTDA {
     }
 
 
-    private void mostrarCamino(int[] previo, int destino) {
+    private void mostrarCamino(int[] previo, int destino) { // O(cte)
         if (previo[destino] != -1) {
             mostrarCamino(previo, previo[destino]);
         }
@@ -133,7 +133,7 @@ public class Grafo implements GrafoTDA {
     }
 
 
-    private int obtenerIndiceNodo(int valor) {
+    private int obtenerIndiceNodo(int valor) { // O(n)
         for (int i = 0; i < numNodos; i++) {
             if (nodos[i] == valor) {
                 return i;
