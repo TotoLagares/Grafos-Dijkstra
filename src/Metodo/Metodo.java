@@ -22,9 +22,11 @@ public class Metodo extends Grafo {
         grafo.agregarArista(3,4, 1);
         grafo.agregarArista(5,3, 1);
         grafo.agregarArista(5,7, 2);
+        grafo.agregarArista(6,4, 20);
         grafo.agregarArista(1,7, 3);
 
         grafo.eliminarNodo(6);
+
 
 
         grafo.verAristas();//columnas <-- / filas -->
